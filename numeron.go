@@ -20,8 +20,21 @@ func numbertest(n_m int) [3]int {
 	n[1] = n_m / 10
 	n[2] = n_m - 10*n[1]
 
+	if n[0] == n[1] || n[1] == n[2] || n[2] == n[0] {
+		n = [...]int{0, 0, 0}
+		return n
+	}
+
 	return n
 
+}
+
+func checkEatBite(n [3]int, m [3]int) (int, int) {
+	var eat int
+	var bite int
+	eat = 1
+	bite = 1
+	return eat, bite
 }
 
 func main() {
@@ -30,8 +43,22 @@ func main() {
 	fmt.Scan(&n_m1)
 
 	var n [3]int
-	n = numbertest(n_m1)
+	n = numbertest(n_m1) //保持する数字のエラーを確かめる　配列に格納する
 
 	fmt.Println(n)
 
+	var n_est int
+	print("input estimate number: ")
+	fmt.Scan(&n_est)
+	var m [3]int
+	m = numbertest(n_est) //推定する数字のエラーを確かめる　配列に格納する
+
+	fmt.Println(m)
+
+	eat, bite := checkEatBite(n, m)
+
+	fmt.Print(eat)
+	print("EAT ")
+	fmt.Print(bite)
+	println("BITE")
 }
