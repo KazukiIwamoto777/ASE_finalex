@@ -32,8 +32,17 @@ func numbertest(n_m int) [3]int {
 func checkEatBite(n [3]int, m [3]int) (int, int) {
 	var eat int
 	var bite int
-	eat = 1
-	bite = 1
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if n[i] == m[j] {
+				if i == j {
+					eat++
+				} else {
+					bite++
+				}
+			}
+		}
+	}
 	return eat, bite
 }
 
