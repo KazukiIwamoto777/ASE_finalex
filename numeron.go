@@ -62,6 +62,8 @@ func errorcheck(num [3]int) bool {
 }
 
 func main() {
+	var eat int
+	var bite int
 	var p1string string
 	var p1int int
 	var p1 [3]int
@@ -118,9 +120,18 @@ func main() {
 			}
 		}
 		//eat,biteの表示
+		eat, bite = checkEatBite(p2, p1est)
+		fmt.Print(eat)
+		print("EAT ")
+		fmt.Print(bite)
+		println("BITE")
+		//勝敗判定
+		if eat == 3 {
+			fmt.Println("Player1の勝利")
+			break
+		}
 
 		//p2 turn
-
 		var p2est_string string
 		var p2est_int int
 		var p2est [3]int
@@ -137,6 +148,18 @@ func main() {
 			} else {
 				fmt.Println("Please enter the number again")
 			}
+		}
+		//eat,biteの表示
+		eat, bite = checkEatBite(p1, p2est)
+		fmt.Print(eat)
+		print("EAT ")
+		fmt.Print(bite)
+		println("BITE")
+
+		//勝敗判定
+		if eat == 3 {
+			fmt.Println("Player2の勝利")
+			break
 		}
 	}
 	/*
