@@ -67,6 +67,8 @@ func main() {
 	var p1string string
 	var p1int int
 	var p1 [3]int
+	//p1stringをパスワード入力モードで入力する
+	//p1を二次元配列にしてログを格納する
 
 	for {
 		print("Player1 : ")
