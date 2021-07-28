@@ -53,34 +53,113 @@ func stringtoInt(num string) int {
 	return num2
 }
 
+func errorcheck(num [3]int) bool {
+	if num[0] == 0 && num[1] == 0 && num[2] == 0 {
+		return false
+	} else {
+		return true
+	}
+}
+
 func main() {
-	var n_m1 string
-	print("input number: ")
-	fmt.Scan(&n_m1)
+	var p1string string
+	var p1int int
+	var p1 [3]int
 
-	var n_m2 int
-	n_m2 = stringtoInt(n_m1) //string をintにする関数
+	for {
+		print("Player1 : ")
+		fmt.Scan(&p1string)
 
-	var n [3]int
-	n = numbertest(n_m2) //保持する数字のエラーを確かめる　配列に格納する
-	fmt.Println(n)
+		p1int = stringtoInt(p1string)
+		p1 = numbertest(p1int) //保持する数字のエラーを確かめる　配列に格納する
 
-	var n_est string
-	print("input estimate number: ")
-	fmt.Scan(&n_est)
+		if errorcheck(p1) == true {
+			break
+		} else {
+			fmt.Println("Please enter the number again :")
+		}
+	}
+	var p2string string
+	var p2int int
+	var p2 [3]int
 
-	var n_est2 int
-	n_est2 = stringtoInt(n_est)
+	for {
+		print("Player2 : ")
+		fmt.Scan(&p2string)
 
-	var m [3]int
-	m = numbertest(n_est2) //推定する数字のエラーを確かめる　配列に格納する
+		p2int = stringtoInt(p2string)
+		p2 = numbertest(p2int) //保持する数字のエラーを確かめる　配列に格納する
 
-	fmt.Println(m)
+		if errorcheck(p2) == true {
+			break
+		} else {
+			fmt.Println("Please enter the number again")
+		}
+	}
 
-	eat, bite := checkEatBite(n, m)
+	for {
+		//p1 turn
+		var p1est_string string
+		var p1est_int int
+		var p1est [3]int
 
-	fmt.Print(eat)
-	print("EAT ")
-	fmt.Print(bite)
-	println("BITE")
+		fmt.Println("Player1のターンです")
+		for {
+			fmt.Print("Estimate number : ")
+			fmt.Scan(&p1est_string)
+
+			p1est_int = stringtoInt(p1est_string)
+			p1est = numbertest(p1est_int) //保持する数字のエラーを確かめる　配列に格納する
+
+			if errorcheck(p1est) == true {
+				break
+			} else {
+				fmt.Println("Please enter the number again")
+			}
+		}
+		//eat,biteの表示
+
+		//p2 turn
+
+		var p2est_string string
+		var p2est_int int
+		var p2est [3]int
+		fmt.Println("Player2のターンです")
+		for {
+			fmt.Print("Estimate number : ")
+			fmt.Scan(&p2est_string)
+
+			p2est_int = stringtoInt(p2est_string)
+			p2est = numbertest(p2est_int) //保持する数字のエラーを確かめる　配列に格納する
+
+			if errorcheck(p2est) == true {
+				break
+			} else {
+				fmt.Println("Please enter the number again")
+			}
+		}
+	}
+	/*
+		n = numbertest(n_m2) //保持する数字のエラーを確かめる　配列に格納する
+		fmt.Println(n)
+
+		var n_est string
+		print("input estimate number: ")
+		fmt.Scan(&n_est)
+
+		var n_est2 int
+		n_est2 = stringtoInt(n_est)
+
+		var m [3]int
+		m = numbertest(n_est2) //推定する数字のエラーを確かめる　配列に格納する
+
+		fmt.Println(m)
+
+		eat, bite := checkEatBite(n, m)
+
+		fmt.Print(eat)
+		print("EAT ")
+		fmt.Print(bite)
+		println("BITE")
+	*/
 }
