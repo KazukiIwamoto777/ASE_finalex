@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	//"strconv"
+	"strconv"
 	//"strings"
 )
 
@@ -46,21 +46,34 @@ func checkEatBite(n [3]int, m [3]int) (int, int) {
 	return eat, bite
 }
 
+func stringtoInt(num string) int {
+	//stringをintにする
+	var num2 int
+	num2, _ = strconv.Atoi(num)
+	return num2
+}
+
 func main() {
-	var n_m1 int
+	var n_m1 string
 	print("input number: ")
 	fmt.Scan(&n_m1)
 
-	var n [3]int
-	n = numbertest(n_m1) //保持する数字のエラーを確かめる　配列に格納する
+	var n_m2 int
+	n_m2 = stringtoInt(n_m1) //string をintにする関数
 
+	var n [3]int
+	n = numbertest(n_m2) //保持する数字のエラーを確かめる　配列に格納する
 	fmt.Println(n)
 
-	var n_est int
+	var n_est string
 	print("input estimate number: ")
 	fmt.Scan(&n_est)
+
+	var n_est2 int
+	n_est2 = stringtoInt(n_est)
+
 	var m [3]int
-	m = numbertest(n_est) //推定する数字のエラーを確かめる　配列に格納する
+	m = numbertest(n_est2) //推定する数字のエラーを確かめる　配列に格納する
 
 	fmt.Println(m)
 
